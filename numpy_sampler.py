@@ -37,6 +37,11 @@ def rw_metropolis_sampler(logpdf, initial_position):
         yield position
 
 
+loc = np.array([[-2, 0, 3.2, 2.5]]).T
+scale = np.array([[1.2, 1, 5, 2.8]]).T
+weights = np.array([[0.2, 0.3, 0.1, 0.4]]).T
+
+
 def mixture_logpdf(x):
     """Log probability distribution function of a gaussian mixture model.
 
@@ -50,9 +55,6 @@ def mixture_logpdf(x):
     np.ndarray (, n_chains)
         The value of the log probability density function at x.
     """
-    loc = np.array([[-2, 0, 3.2, 2.5]]).T
-    scale = np.array([[1.2, 1, 5, 2.8]]).T
-    weights = np.array([[0.2, 0.3, 0.1, 0.4]]).T
 
     log_probs = norm(loc, scale).logpdf(x)
 
